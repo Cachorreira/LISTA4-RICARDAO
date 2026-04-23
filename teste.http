@@ -1,0 +1,147 @@
+### =========================
+### 1. PRODUTOS
+### =========================
+
+###  Body vazio
+POST http://localhost:3000/produtos
+Content-Type: application/json
+
+{}
+
+###
+
+###  Preço como string
+POST http://localhost:3000/produtos
+Content-Type: application/json
+
+{
+  "nome": "Produto",
+  "preco": "100",
+  "estoque": 10
+}
+
+###
+
+###  Estoque negativo
+POST http://localhost:3000/produtos
+Content-Type: application/json
+
+{
+  "nome": "Produto",
+  "preco": 100,
+  "estoque": -5
+}
+
+###
+
+###  Produto válido
+POST http://localhost:3000/produtos
+Content-Type: application/json
+
+{
+  "nome": "Notebook",
+  "preco": 2500,
+  "estoque": 5
+}
+
+###
+
+### =========================
+### 2. USUÁRIOS (AUTENTICAÇÃO)
+### =========================
+
+###  Sem API KEY
+POST http://localhost:3000/usuarios
+
+###
+
+###  API KEY errada
+POST http://localhost:3000/usuarios
+x-api-key: errado
+
+###
+
+###  API KEY correta
+POST http://localhost:3000/usuarios
+x-api-key: senha123
+
+###
+
+### =========================
+### 3. EVENTOS
+### =========================
+
+###  Presencial sem endereço
+POST http://localhost:3000/eventos
+Content-Type: application/json
+
+{
+  "nome": "Evento",
+  "data": "2025-10-10",
+  "online": false
+}
+
+###
+
+###  Presencial com endereço
+POST http://localhost:3000/eventos
+Content-Type: application/json
+
+{
+  "nome": "Evento",
+  "data": "2025-10-10",
+  "online": false,
+  "endereco": "Rua A"
+}
+
+###
+
+###  Online sem endereço
+POST http://localhost:3000/eventos
+Content-Type: application/json
+
+{
+  "nome": "Evento",
+  "data": "2025-10-10",
+  "online": true
+}
+
+###
+
+### =========================
+### 4. TRANSFERÊNCIAS
+### =========================
+
+###  Valor inválido
+POST http://localhost:3000/transferencias
+Content-Type: application/json
+
+{
+  "valor": -10,
+  "contaOrigem": "123",
+  "contaDestino": "456"
+}
+
+###
+
+###  Limite excedido
+POST http://localhost:3000/transferencias
+Content-Type: application/json
+
+{
+  "valor": 2000,
+  "contaOrigem": "123",
+  "contaDestino": "456"
+}
+
+###
+
+###  Transferência válida
+POST http://localhost:3000/transferencias
+Content-Type: application/json
+
+{
+  "valor": 500,
+  "contaOrigem": "123",
+  "contaDestino": "456"
+}
